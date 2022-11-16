@@ -8,7 +8,8 @@
 }
 
 .App-header {
-  background-color: #f0e9df;
+  background-image: url("../public/crumpled.jpg");
+  background-size: contain;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
