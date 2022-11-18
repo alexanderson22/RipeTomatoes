@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import Info from "./Info";
+import Entry from "./Entry.js";
 export default function App() {
   const [data, setData] = useState("");
   const [tvGenre, setTVGenre] = useState("");
@@ -8,12 +10,24 @@ export default function App() {
   const [movieName, setMovieName] = useState("");
   const [rottenTomato, setRottenTomato] = useState("");
 
+  useEffect(() => {
+    const imdbID = encodeURIComponent(tvName.toLowerCase());
+    const url = 'http://www.omdbapi.com/?i=${imdbID}&apikey=1d9975b5';
+    console.log(url);
+    fetch(url)
+      .then((r) => r.json())
+      .then((r) => setData(r))
+      .catch((e) => setData(e));
+  }, [tvName]);
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
       </header>
+      <Entry action={setTVName} />
+      <Info />
     </div>
   );
 }
