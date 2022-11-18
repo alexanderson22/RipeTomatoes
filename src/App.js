@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Info from "./Info";
 import Entry from "./Entry.js";
+import Button from "./Button";
 export default function App() {
   const [data, setData] = useState("");
   const [tvGenre, setTVGenre] = useState("");
@@ -9,6 +10,7 @@ export default function App() {
   const [movieGenre, setMovieGenre] = useState("");
   const [movieName, setMovieName] = useState("");
   const [rottenTomato, setRottenTomato] = useState("");
+  const {index, setIndex} = useState(0);
 
   useEffect(() => {
     const imdbID = encodeURIComponent(tvName.toLowerCase());
@@ -25,8 +27,9 @@ export default function App() {
       <header className="App-header">
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
+        <Entry action={setTVName} />
+        <Button action={setIndex} name="Search" />
       </header>
-      <Entry action={setTVName} />
       <Info />
     </div>
   );
