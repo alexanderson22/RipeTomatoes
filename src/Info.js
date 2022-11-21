@@ -1,4 +1,4 @@
-export default function Info({ data, tvName}) {
+export default function Info({ data, tvName, movieName, tvGenre, rottenTomato}) {
     return !data || !tvName ? (
         <p></p>
     ) : !data.title ? (

@@ -13,13 +13,24 @@ export default function App() {
   useEffect(() => {
     //make spaces into +
     const show = encodeURIComponent(tvName.toLowerCase());
-    const url = `https://www.omdbapi.com/?apikey=1d9975b5&t=${show}`;
-    console.log(url);
-    fetch(url)
+    const tvurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=series&t=${show}`;
+    console.log(tvurl);
+    fetch(tvurl)
       .then((r) => r.json())
       .then((r) => setData(r))
       .catch((e) => setData(e));
   }, [tvName]);
+
+  useEffect(() => {
+    //make spaces into +
+    const movie = encodeURIComponent(movieName.toLowerCase());
+    const movieurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=movie&t=${movie}`;
+    console.log(movieurl);
+    fetch(movieurl)
+      .then((r) => r.json())
+      .then((r) => setData(r))
+      .catch((e) => setData(e));
+  }, {movieName});
 
   return (
     //add action to Button
