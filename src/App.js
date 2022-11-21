@@ -12,9 +12,11 @@ export default function App() {
   const [rottenTomato, setRottenTomato] = useState("");
   const {index, setIndex} = useState(0);
 
+  
   useEffect(() => {
-    const imdbID = encodeURIComponent(tvName.toLowerCase());
-    const url = 'http://www.omdbapi.com/?i=${imdbID}&apikey=1d9975b5';
+    //make spaces into +
+    const tvTitle = encodeURIComponent(tvName.toLowerCase());
+    const url = `https://www.omdbapi.com/?apikey=1d9975b5&t=${tvTitle}`;
     console.log(url);
     fetch(url)
       .then((r) => r.json())
