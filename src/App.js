@@ -4,7 +4,8 @@ import Info from "./Info";
 import Entry from "./Entry.js";
 import Button from "./Button";
 export default function App() {
-  const [data, setData] = useState("");
+  const [tvdata, settvData] = useState("");
+  const [moviedata, setmovieData] = useState("");
   const [tvGenre, setTVGenre] = useState("");
   const [tvName, setTVName] = useState("");
   const [movieName, setMovieName] = useState("");
@@ -17,8 +18,8 @@ export default function App() {
     console.log(tvurl);
     fetch(tvurl)
       .then((r) => r.json())
-      .then((r) => setData(r))
-      .catch((e) => setData(e));
+      .then((r) => settvData(r))
+      .catch((e) => settvData(e));
   }, [tvName]);
 
   useEffect(() => {
@@ -28,8 +29,8 @@ export default function App() {
     console.log(movieurl);
     fetch(movieurl)
       .then((r) => r.json())
-      .then((r) => setData(r))
-      .catch((e) => setData(e));
+      .then((r) => setmovieData(r))
+      .catch((e) => setmovieData(e));
   }, {movieName});
 
   return (
