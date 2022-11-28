@@ -38,20 +38,22 @@ export default function App() {
 
   return (
     //add action to Button
+
+    // maybe add a selector thing to choose if it's a tv show or movie; -D
     <div className="App">
       <header className="App-header">
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
         <Entry action={setTVName} />
         <Button name="Search" />
+        <Info
+          tvName={tvName}
+          tvdata={tvdata}
+          movieName={movieName}
+          tvGenre={tvGenre}
+          rottenTomato={rottenTomato}
+        />
       </header>
-      <Info
-        tvName={tvName}
-        tvdata={tvdata}
-        movieName={movieName}
-        tvGenre={tvGenre}
-        rottenTomato={rottenTomato}
-      />
     </div>
   );
 }

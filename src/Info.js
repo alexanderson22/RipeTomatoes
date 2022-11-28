@@ -8,11 +8,16 @@ export default function Info({
 }) {
   return !tvdata || !tvName ? (
     <p></p>
-  ) : !tvdata.title ? (
-    <p>{tvName} cannot be found</p>
+  ) : !tvdata.Title ? (
+    <p>{tvdata.Title} cannot be found</p>
   ) : (
     <div>
-      <ul></ul>
+      <ul>
+        <li>{tvdata.Title}</li>
+        <li>
+          <img src={tvdata.Poster}></img>
+        </li>
+      </ul>
     </div>
   );
 }
