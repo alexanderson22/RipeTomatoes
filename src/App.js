@@ -10,7 +10,7 @@ export default function App() {
   const [tvName, setTVName] = useState("");
   const [movieName, setMovieName] = useState("");
   const [rottenTomato, setRottenTomato] = useState("");
-  
+
   useEffect(() => {
     //make spaces into +
     const show = encodeURIComponent(tvName.toLowerCase());
@@ -22,16 +22,19 @@ export default function App() {
       .catch((e) => settvData(e));
   }, [tvName]);
 
-  useEffect(() => {
-    //make spaces into +
-    const movie = encodeURIComponent(movieName.toLowerCase());
-    const movieurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=movie&t=${movie}`;
-    console.log(movieurl);
-    fetch(movieurl)
-      .then((r) => r.json())
-      .then((r) => setmovieData(r))
-      .catch((e) => setmovieData(e));
-  }, {movieName});
+  useEffect(
+    () => {
+      //make spaces into +
+      const movie = encodeURIComponent(movieName.toLowerCase());
+      const movieurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=movie&t=${movie}`;
+      console.log(movieurl);
+      fetch(movieurl)
+        .then((r) => r.json())
+        .then((r) => setmovieData(r))
+        .catch((e) => setmovieData(e));
+    },
+    { movieName }
+  );
 
   return (
     //add action to Button
@@ -42,8 +45,13 @@ export default function App() {
         <Entry action={setTVName} />
         <Button name="Search" />
       </header>
-      <Info tvName={tvName} data={data} movieName={movieName} tvGenre={tvGenre} rottenTomato={rottenTomato} />
+      <Info
+        tvName={tvName}
+        tvdata={tvdata}
+        movieName={movieName}
+        tvGenre={tvGenre}
+        rottenTomato={rottenTomato}
+      />
     </div>
   );
 }
-
