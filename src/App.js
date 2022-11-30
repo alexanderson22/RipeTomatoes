@@ -40,6 +40,7 @@ export default function App() {
     //add action to Button
 
     // maybe add a selector thing to choose if it's a tv show or movie; -D
+    // add loading state boolean var for a little loading wheel
     <div className="App">
       <header className="App-header">
         <h1>RipeTomatoes</h1>
