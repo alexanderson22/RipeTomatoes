@@ -10,7 +10,7 @@ export default function App() {
   const [tvName, setTVName] = useState("");
   const [movieName, setMovieName] = useState("");
   const [rottenTomato, setRottenTomato] = useState("");
-  
+
   useEffect(() => {
     //make spaces into +
     const show = encodeURIComponent(tvName.toLowerCase());
@@ -36,15 +36,22 @@ export default function App() {
 
   return (
     //add action to Button
+
+    // maybe add a selector thing to choose if it's a tv show or movie; -D
     <div className="App">
       <header className="App-header">
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
         <Entry action={setTVName} />
         <Button name="Search" />
+        <Info
+          tvName={tvName}
+          tvdata={tvdata}
+          movieName={movieName}
+          tvGenre={tvGenre}
+          rottenTomato={rottenTomato}
+        />
       </header>
-      <Info tvName={tvName} data={data} movieName={movieName} tvGenre={tvGenre} rottenTomato={rottenTomato} />
     </div>
   );
 }
-
