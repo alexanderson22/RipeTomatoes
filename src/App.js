@@ -4,37 +4,32 @@ import Info from "./Info";
 import Entry from "./Entry.js";
 import Button from "./Button";
 export default function App() {
-  const [tvdata, settvData] = useState("");
-  const [moviedata, setmovieData] = useState("");
-  const [tvGenre, setTVGenre] = useState("");
-  const [tvName, setTVName] = useState("");
+  const [recdata, setrecData] = useState("");
   const [movieName, setMovieName] = useState("");
-  const [rottenTomato, setRottenTomato] = useState("");
+  const [movieData, setMovieData] = useState("");
+  const [movieID, setmovieID] = useState("");
 
   useEffect(() => {
     //make spaces into +
-    const show = encodeURIComponent(tvName.toLowerCase());
-    const tvurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=series&t=${show}`;
-    console.log(tvurl);
-    fetch(tvurl)
+    const movie= encodeURIComponent(movieName.toLowerCase());
+    const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
+    console.log(movieurl);
+    fetch(movieurl)
       .then((r) => r.json())
-      .then((r) => settvData(r))
-      .catch((e) => settvData(e));
-  }, [tvName]);
+      .then((r) => setMovieData(r))
+      .catch((e) => setMovieData(e));
+  }, [movieName]);
 
-  useEffect(
-    () => {
-      //make spaces into +
-      const movie = encodeURIComponent(movieName.toLowerCase());
-      const movieurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=movie&t=${movie}`;
-      console.log(movieurl);
-      fetch(movieurl)
-        .then((r) => r.json())
-        .then((r) => setmovieData(r))
-        .catch((e) => setmovieData(e));
-    },
-    { movieName }
-  );
+  useEffect(() => {
+    //make spaces into +
+    // filter in genre to url if possible
+    const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
+    console.log(recurl);
+    fetch(movieurl)
+      .then((r) => r.json())
+      .then((r) => setrecData(r))
+      .catch((e) => setrecData(e));
+  }, {movieID});
 
   return (
     //add action to Button
