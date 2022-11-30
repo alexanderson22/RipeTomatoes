@@ -24,6 +24,7 @@ export default function App() {
 
   useEffect(() => {
     //make spaces into +
+    // filter in genre to url if possible
     const movie = encodeURIComponent(movieName.toLowerCase());
     const movieurl = `https://www.omdbapi.com/?apikey=1d9975b5&type=movie&t=${movie}`;
     console.log(movieurl);
