@@ -7,10 +7,7 @@ export default function MovieInfo({
     <p>{movieName} cannot be found</p>
   ) : (
     <div>
-      <ul>
-        {movieData.page.results[0].id}
-        <li></li>
-      </ul>
+        {movieData.page.results[0].id} 
     </div>
   );
 }
@@ -18,5 +15,3 @@ export default function MovieInfo({
 // id is found in results[0] under id
 
 // Want to ultimately return the movieId
-
-// What does ul do?
