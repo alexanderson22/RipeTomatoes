@@ -1,10 +1,11 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Info from "./Info";
+import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
+import RecInfo from "./RecInfo.js";
 import Button from "./Button";
 export default function App() {
-  const [recdata, setrecData] = useState("");
+  const [recData, setrecData] = useState("");
   const [movieName, setMovieName] = useState("");
   const [movieData, setMovieData] = useState("");
   const [movieID, setmovieID] = useState("");
@@ -22,7 +23,6 @@ export default function App() {
 
   useEffect(() => {
     //make spaces into +
-    // filter in genre to url if possible
     const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
     console.log(recurl);
     fetch(movieurl)
@@ -39,14 +39,13 @@ export default function App() {
       <header className="App-header">
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
-        <Entry action={setTVName} />
+        <Entry action={setMovieName} />
         <Button name="Search" />
-        <Info
-          tvName={tvName}
-          tvdata={tvdata}
-          movieName={movieName}
-          tvGenre={tvGenre}
-          rottenTomato={rottenTomato}
+        <MovieInfo
+          movieData={movieData}
+        />
+        <RecInfo
+          recData={recData}
         />
       </header>
     </div>
