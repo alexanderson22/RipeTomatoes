@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
 import Button from "./Button";
+import { SignIn } from "./services/authService";
+import { SignOut } from "./services/authService";
+import { useAuthentication } from "./services/authService";
+
 export default function App() {
   const [movieName, setMovieName] = useState("");
   const [data, setData] = useState("");
@@ -36,6 +40,7 @@ export default function App() {
     // add loading state boolean var for a little loading wheel
     <div className="App">
       <header className="App-header">
+        {!user ? <SignIn /> : <SignOut />}
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
         <Entry action={setMovieName} />
