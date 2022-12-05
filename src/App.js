@@ -4,36 +4,33 @@ import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
 import RecInfo from "./RecInfo.js";
 import Button from "./Button";
-import { SignIn } from "./services/authService";
-import { SignOut } from "./services/authService";
-import { useAuthentication } from "./services/authService";
 export default function App() {
   const [recData, setrecData] = useState("");
   const [movieName, setMovieName] = useState("");
-  const [movieData, setMovieData] = useState("");
+  const [data, setData] = useState("");
   const [movieID, setmovieID] = useState("");
-  const user = useAuthentication()
+  var ranIndex = new Array(0);
 
-  // useEffect(() => {
-  //   //make spaces into +
-  //   const movie= encodeURIComponent(movieName.toLowerCase());
-  //   const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
-  //   console.log(movieurl);
-  //   fetch(movieurl)
-  //     .then((r) => r.json())
-  //     .then((r) => setMovieData(r))
-  //     .catch((e) => setMovieData(e));
-  // }, [movieName]);
-
-  // useEffect(() => {
-  //   //make spaces into +
-  //   const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
-  //   console.log(recurl);
-  //   fetch(recurl)
-  //     .then((r) => r.json())
-  //     .then((r) => setrecData(r))
-  //     .catch((e) => setrecData(e));
-  // }, [movieID]);
+  function getRanNum() {
+    for (let i = 0; i < 5; i++) {
+      ranIndex.push(Math.floor(Math.random() * 40));
+    }
+    return ranIndex;
+  }
+// try to return an array of 5 random numbers 
+  useEffect(() => {
+    //make spaces into +
+    const movie= encodeURIComponent(movieName.toLowerCase());
+    const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
+    const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
+    console.log(movieurl);
+    fetch(movieurl)
+      .then((r) => r.json())
+      .then((r) => r.results[0].movieId)
+      .then((movieId) => fetch(recurl))
+      .then((r) => r.json())
+      .then(data => setData());
+  }, [movieName]);
 
   return (
     //add action to Button
@@ -41,20 +38,17 @@ export default function App() {
     // maybe add a selector thing to choose if it's a tv show or movie; -D
     <div className="App">
       <header className="App-header">
-        {!user ? <SignIn /> : <SignOut />}
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
         <Entry action={setMovieName} />
-        <Button name="Search" />
+        <Button action={getRanNum} name="Search" />
         <MovieInfo
-          movieData={{page:{results:[
-            {id:1,title:"Harry Potter"},{id:2,title:"Batman"}
-          ]}}}
+          movieData={movieData}
+          movieName={movieName}
         />
         <RecInfo
-          recData={{page:{results:[
-            {id:3,title:"it"},{id:4,title:"jaws"}
-          ]}}}
+          recData={recData}
+          movieId={movieId}
         />
       </header>
     </div>
