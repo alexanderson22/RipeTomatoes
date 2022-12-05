@@ -1,13 +1,18 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Info from "./Info";
+import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
+import RecInfo from "./RecInfo.js";
 import Button from "./Button";
+import { SignIn } from "./services/authService";
+import { SignOut } from "./services/authService";
+import { useAuthentication } from "./services/authService";
 export default function App() {
-  const [recdata, setrecData] = useState("");
+  const [recData, setrecData] = useState("");
   const [movieName, setMovieName] = useState("");
   const [movieData, setMovieData] = useState("");
   const [movieID, setmovieID] = useState("");
+  const user = useAuthentication();
 
   useEffect(() => {
     //make spaces into +
@@ -41,16 +46,30 @@ export default function App() {
     // add loading state boolean var for a little loading wheel
     <div className="App">
       <header className="App-header">
+        {!user ? <SignIn /> : <SignOut />}
         <h1>RipeTomatoes</h1>
         <h1>🍅</h1>
-        <Entry action={setTVName} />
+        <Entry action={setMovieName} />
         <Button name="Search" />
-        <Info
-          tvName={tvName}
-          tvdata={tvdata}
-          movieName={movieName}
-          tvGenre={tvGenre}
-          rottenTomato={rottenTomato}
+        <MovieInfo
+          movieData={{
+            page: {
+              results: [
+                { id: 1, title: "Harry Potter" },
+                { id: 2, title: "Batman" },
+              ],
+            },
+          }}
+        />
+        <RecInfo
+          recData={{
+            page: {
+              results: [
+                { id: 3, title: "it" },
+                { id: 4, title: "jaws" },
+              ],
+            },
+          }}
         />
       </header>
     </div>
