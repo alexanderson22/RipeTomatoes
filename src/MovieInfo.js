@@ -1,13 +1,13 @@
 export default function MovieInfo({
   data
 }) {
-  return !movieData ? (
+  return !data ? (
     <p></p>
-  ) : !movieData?.page.results[0].title ? (
+  ) : !data?.page.results[0].title ? (
     <p>{movieName} cannot be found</p>
   ) : (
     <div>
-        {movieId = movieData.page.results[0].id} 
+        {movieId = data.page.results[0].id} 
     </div>
   );
 }

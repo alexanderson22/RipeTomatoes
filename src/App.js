@@ -19,7 +19,7 @@ export default function App() {
     //make spaces into +
     const movie= encodeURIComponent(movieName.toLowerCase());
     const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
-    const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
+    const recurl = `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
     console.log(movieurl);
     fetch(movieurl)
       .then((r) => r.json())
