@@ -8,7 +8,7 @@ export default function RecInfo({
     ) : (
       <div>
         <ul>
-          {recData.page.results[ranNum].map(() => (
+          {recData.page.results[ranNum].map((name, index) => (
             <li> key={} </li>
           ))}
         </ul>
