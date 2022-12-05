@@ -3,11 +3,11 @@ export default function MovieInfo({
 }) {
   return !data ? (
     <p></p>
-  ) : !data?.page.results[0].title ? (
-    <p>{movieName} cannot be found</p>
+  ) : !data?.results[0].title ? (
+    <p>{data.results[0].title} cannot be found</p>
   ) : (
     <div>
-        {movieId = data.page.results[0].id} 
+       
     </div>
   );
 }

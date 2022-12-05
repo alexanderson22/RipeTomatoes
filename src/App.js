@@ -6,6 +6,7 @@ import Button from "./Button";
 export default function App() {
   const [movieName, setMovieName] = useState("");
   const [data, setData] = useState("");
+  const [id, setId] = useState("");
   var ranIndex = new Array(0);
 
   function getRanNum() {
