@@ -1,5 +1,5 @@
 export default function RecInfo({
-    recData, movieId
+    recData, movieId, ranNum
   }) {
     return !recData ? (
       <p></p>
@@ -16,7 +16,6 @@ export default function RecInfo({
     );
   }
 
-  // make a random number generator between 0 and 39 for index of results.
+// make a random number generator between 0 and 39 for index of results.
 
-  // for loop needed to get the 5 or 10 recommendations
-
+// for loop needed to get the 5 or 10 recommendations
