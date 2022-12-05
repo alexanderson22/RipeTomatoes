@@ -1,5 +1,5 @@
 export default function MovieInfo({
-  movieData, movieName
+  data
 }) {
   return !movieData ? (
     <p></p>
@@ -7,7 +7,7 @@ export default function MovieInfo({
     <p>{movieName} cannot be found</p>
   ) : (
     <div>
-        {movieData.page.results[0].id} 
+        {movieId = movieData.page.results[0].id} 
     </div>
   );
 }
