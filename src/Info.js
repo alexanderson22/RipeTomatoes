@@ -1,22 +1,13 @@
-export default function Info({
-  tvdata,
-  movieData,
-  tvName,
-  movieName,
-  tvGenre,
-  rottenTomato,
-}) {
-  return !tvdata || !tvName ? (
+export default function Info({ recdata, movieData }) {
+  return !movieData || !movieName ? (
     <p></p>
-  ) : !tvdata.Title ? (
-    <p>{tvdata.Title} cannot be found</p>
+  ) : !movieData.Title ? (
+    <p>{movieData.Title} cannot be found</p>
   ) : (
     <div>
       <ul>
-        <li>{tvdata.Title}</li>
-        <li>
-          <img src={tvdata.Poster}></img>
-        </li>
+        <li>{movieData.Title}</li>
+        <li></li>
       </ul>
     </div>
   );

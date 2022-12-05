@@ -11,7 +11,7 @@ export default function App() {
 
   useEffect(() => {
     //make spaces into +
-    const movie= encodeURIComponent(movieName.toLowerCase());
+    const movie = encodeURIComponent(movieName.toLowerCase());
     const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
     console.log(movieurl);
     fetch(movieurl)
@@ -20,16 +20,19 @@ export default function App() {
       .catch((e) => setMovieData(e));
   }, [movieName]);
 
-  useEffect(() => {
-    //make spaces into +
-    // filter in genre to url if possible
-    const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
-    console.log(recurl);
-    fetch(movieurl)
-      .then((r) => r.json())
-      .then((r) => setrecData(r))
-      .catch((e) => setrecData(e));
-  }, {movieID});
+  useEffect(
+    () => {
+      //make spaces into +
+      // filter in genre to url if possible
+      const recurl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`;
+      console.log(recurl);
+      fetch(movieurl)
+        .then((r) => r.json())
+        .then((r) => setrecData(r))
+        .catch((e) => setrecData(e));
+    },
+    { movieID }
+  );
 
   return (
     //add action to Button
