@@ -2,10 +2,8 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
-import RecInfo from "./RecInfo.js";
 import Button from "./Button";
 export default function App() {
-  const [recData, setrecData] = useState("");
   const [movieName, setMovieName] = useState("");
   const [data, setData] = useState("");
   const [movieID, setmovieID] = useState("");
@@ -26,8 +24,8 @@ export default function App() {
     console.log(movieurl);
     fetch(movieurl)
       .then((r) => r.json())
-      .then((r) => r.results[0].movieId)
-      .then((movieId) => fetch(recurl))
+      .then((r) => r.results[0].movieID)
+      .then((movieID) => fetch(recurl))
       .then((r) => r.json())
       .then(data => setData());
   }, [movieName]);
@@ -43,12 +41,8 @@ export default function App() {
         <Entry action={setMovieName} />
         <Button action={getRanNum} name="Search" />
         <MovieInfo
-          movieData={movieData}
+          data={data}
           movieName={movieName}
-        />
-        <RecInfo
-          recData={recData}
-          movieId={movieId}
         />
       </header>
     </div>
