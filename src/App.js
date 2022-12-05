@@ -5,6 +5,7 @@ import Entry from "./Entry.js";
 import Button from "./Button";
 export default function App() {
   const [movieName, setMovieName] = useState("");
+  const [searchData, setSearchData] = useState("");
   const [data, setData] = useState("");
   const [movieID, setmovieID] = useState("");
   var ranIndex = new Array(0);
@@ -24,10 +25,15 @@ export default function App() {
     console.log(movieurl);
     fetch(movieurl)
       .then((r) => r.json())
-      .then((r) => r.results[0].movieID)
-      .then((movieID) => fetch(recurl))
+      .then((data) => setSearchData(data.results[0].id));
+
+    fetch(
+      `https://api.themoviedb.org/3/movie/${searchData}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`
+    )
       .then((r) => r.json())
-      .then((data) => setData());
+      .then((data) => setData(data));
+
+    console.log(data);
   }, [movieName]);
 
   return (
