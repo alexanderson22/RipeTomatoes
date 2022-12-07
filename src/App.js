@@ -14,12 +14,9 @@ export default function App() {
   const [movieName, setMovieName] = useState("");
   const [searchData, setSearchData] = useState("");
   const [data, setData] = useState("");
-  const [loading, setLoading] = useState();
   const user = useAuthentication();
 
   useEffect(() => {
-    //make spaces into +
-    setLoading(true);
     const movie = encodeURIComponent(movieName.toLowerCase());
     const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
     console.log(movieurl);
@@ -34,13 +31,12 @@ export default function App() {
       .then((data) => setData(data.results));
 
     console.log(data);
-    setLoading(false);
   }, [movieName]);
 
   return (
-    //add action to Button
+    // add action to Button
 
-    // add loading state boolean var for a little loading wheel
+    // what to do with sign in button? maybe you can only search if you're signed in
 
     // for some reason the list shows after you search the second time
     <div className="App">
