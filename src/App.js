@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
 import Receipt from "./Receipt.js";
-import Button from "./Button";
 import { SignIn } from "./services/authService";
 import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
