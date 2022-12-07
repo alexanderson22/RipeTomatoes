@@ -1,7 +1,10 @@
 export default function MovieInfo({ data }) {
-  return;
+  return !data ? (
+    <p></p>
+  ) : (
+    data
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 5)
+      .map((movie) => <p>{movie.original_title}</p>)
+  );
 }
-// page is 1, results is index 0.
-// id is found in results[0] under id
-
-// Want to ultimately return the movieId
