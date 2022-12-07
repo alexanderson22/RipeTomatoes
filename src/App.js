@@ -41,7 +41,6 @@ export default function App() {
     <div className="App">
       <header className="App-header">
         {!user ? <SignIn /> : <SignOut />}
-
         {!data ? (
           <div>
             <h1>RipeTomatoes</h1>
