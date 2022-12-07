@@ -2,10 +2,13 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
+import Receipt from "./Receipt.js";
 import Button from "./Button";
 import { SignIn } from "./services/authService";
 import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
+
+import qr from "./qr.png";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
@@ -51,9 +54,17 @@ export default function App() {
             <Entry action={setMovieName} />
           </div>
         ) : (
-          <div>
+          // this should probably be in a receipt component / separated into mini components
+          <div className="Receipt">
             <h1>RipeTomatoes</h1>
+            <h2>web app 2021</h2>
+            <h2>1 LMU Drive</h2>
+            <h2>Los Angeles, CA 90045</h2>
             <MovieInfo data={data} movieName={movieName} />
+            <img className="Qr" src={qr} alt="qr code"></img>
+            <p>XXXXXXXXXXXX2021 CARD APPROVED</p>
+
+            <p>search again?</p>
             <Entry action={setMovieName} />
           </div>
         )}

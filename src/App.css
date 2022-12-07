@@ -20,6 +20,18 @@
   font-family: Receipt;
 }
 
+.Qr {
+  mix-blend-mode: multiply;
+  width: 150px;
+  padding: 0;
+  margin: 0;
+}
+
 Button {
   font-family: Reciept;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
 }
