@@ -46,8 +46,6 @@ export default function App() {
     // for some reason the list shows after you search the second time
     <div className="App">
       <header className="App-header">
-        {!user ? <SignIn /> : <SignOut />}
-
         {!data ? (
           <div>
             <h3>🍅</h3>
@@ -70,6 +68,7 @@ export default function App() {
             <Entry action={setMovieName} />
           </div>
         )}
+        {!user ? <SignIn /> : <SignOut />}
       </header>
     </div>
   );

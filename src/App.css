@@ -31,6 +31,10 @@ Button {
   font-family: Reciept;
 }
 
+h1 {
+  margin: 5px;
+}
+
 h2 {
   font-size: calc(18px + 2vmin);
   margin: 0;
@@ -44,4 +48,20 @@ h3 {
 }
 
 input {
+  font: inherit;
+  border-radius: 20px;
+  border-width: 3px;
+  border-color: black;
+  margin: 0;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  font-family: inherit;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: white;
 }
