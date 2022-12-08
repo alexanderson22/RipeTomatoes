@@ -48,15 +48,13 @@ export default function App() {
       <header className="App-header">
         {!data ? (
           <div>
-            <h3>🍅</h3>
-            <h1>RipeTomatoes</h1>
+            <h1>RipeTomatoes 🍅</h1>
             <Entry action={setMovieName} />
           </div>
         ) : (
           // this should probably be in a receipt component / separated into mini components
           <div className="Receipt">
-            <h1>RipeTomatoes</h1>
-            <h3>🍅</h3>
+            <h1>RipeTomatoes 🍅</h1>
             <h2>web app 2021</h2>
             <h2>1 LMU Drive</h2>
             <h2>Los Angeles, CA 90045</h2>
