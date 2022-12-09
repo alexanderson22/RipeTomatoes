@@ -59,6 +59,13 @@ h2 {
   padding: 0;
 }
 
+img {
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: -4px;
+  margin-right: 5px;
+}
+
 h3 {
   margin: 0;
   padding: 0;
