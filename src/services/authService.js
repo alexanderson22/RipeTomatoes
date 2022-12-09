@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
-export function SignIn() {
+export function SignIn({ clear }) {
   return (
-    <button onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}>
+    <button
+      onClick={() => {
+        signInWithPopup(auth, new GoogleAuthProvider());
+        clear();
+      }}
+    >
       Sign In
     </button>
   );

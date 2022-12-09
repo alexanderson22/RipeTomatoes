@@ -46,7 +46,17 @@ export default function App() {
     // for some reason the list shows after you search the second time
     <div className="App">
       <header className="App-header">
-        {!user ? <SignIn /> : <SignOut />}
+        {!user && <h1>RipeTomatoes 🍅</h1>}
+        {!user ? (
+          <SignIn
+            clear={() => {
+              setMovieName("");
+              setData(null);
+            }}
+          />
+        ) : (
+          <SignOut />
+        )}
         {user && !data ? (
           <div>
             <h1>RipeTomatoes 🍅</h1>
@@ -66,7 +76,9 @@ export default function App() {
             <p>search again?</p>
             <Entry action={setMovieName} />
           </div>
-        ): ""}
+        ) : (
+          ""
+        )}
       </header>
     </div>
   );
