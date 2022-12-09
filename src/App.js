@@ -2,12 +2,13 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import MovieInfo from "./MovieInfo.js";
 import Entry from "./Entry.js";
-import Receipt from "./Receipt.js";
+import MovieRating from "./MovieRating.js";
 import { SignIn } from "./services/authService";
 import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
 
 import qr from "./qr.png";
+import { auth } from "./firebaseConfig";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
@@ -36,37 +37,59 @@ export default function App() {
     }
 
     console.log(data);
-  }, [movieName]);
+  }, [movieName, data]);
+
+  useEffect(() => {
+    if (!user) setData("");
+  }, [user]);
 
   return (
-    // add action to Button
-
-    // what to do with sign in button? maybe you can only search if you're signed in
-
-    // for some reason the list shows after you search the second time
     <div className="App">
       <header className="App-header">
-        {!data ? (
+        {!data || !user ? (
           <div>
             <h1>RipeTomatoes 🍅</h1>
-            <Entry action={setMovieName} />
           </div>
         ) : (
-          // this should probably be in a receipt component / separated into mini components
           <div className="Receipt">
-            <h1>RipeTomatoes 🍅</h1>
-            <h2>web app 2021</h2>
-            <h2>1 LMU Drive</h2>
-            <h2>Los Angeles, CA 90045</h2>
-            <MovieInfo data={data} movieName={movieName} />
-            <img className="Qr" src={qr} alt="qr code"></img>
-            <p>XXXXXXXXXXXX2021 CARD APPROVED</p>
+            <div className="Overlay">
+              <h1>RipeTomatoes 🍅</h1>
+              <h2>web app 2021</h2>
+              <h2>1 LMU Drive</h2>
+              <h2>Los Angeles, CA 90045</h2>
+              <div className="Map">
+                <div className="MovieInfo">
+                  <MovieInfo data={data} />
+                  <p>=======================</p>
+                  <p>Total:</p>
+                </div>
+                <div className="MovieRating">
+                  <MovieRating data={data} />
+                  <p>==========</p>
+                  <p>5</p>
+                </div>
+              </div>
 
-            <p>search again?</p>
-            <Entry action={setMovieName} />
+              <img className="Qr" src={qr} alt="qr code"></img>
+
+              <div className="Card">
+                <p>{auth.currentUser.displayName}</p>
+                <p>XXXXXXXXXXXX2021 CARD APPROVED</p>
+              </div>
+              <p>Thank you, come again!</p>
+            </div>
           </div>
         )}
-        {!user ? <SignIn /> : <SignOut />}
+        <div>
+          {!user ? (
+            <SignIn />
+          ) : (
+            <div className="searchAgain">
+              <Entry action={setMovieName} />
+              <SignOut />
+            </div>
+          )}
+        </div>
       </header>
     </div>
   );
