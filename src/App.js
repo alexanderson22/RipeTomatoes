@@ -11,7 +11,6 @@ import qr from "./qr.png";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
-  const [searchData, setSearchData] = useState("");
   const [data, setData] = useState("");
   const user = useAuthentication();
 
@@ -19,15 +18,22 @@ export default function App() {
     const movie = encodeURIComponent(movieName.toLowerCase());
     const movieurl = `https://api.themoviedb.org/3/search/movie?api_key=37b53cbaa10e2c7d21434c2a90d92950&query=${movie}&page=1`;
     console.log(movieurl);
-    fetch(movieurl)
-      .then((r) => r.json())
-      .then((data) => setSearchData(data.results[0].id));
 
-    fetch(
-      `https://api.themoviedb.org/3/movie/${searchData}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`
-    )
-      .then((r) => r.json())
-      .then((data) => setData(data.results));
+    fetchFirstMovieID().then(fetchRecommendations);
+
+    function fetchFirstMovieID() {
+      return fetch(movieurl)
+        .then((r) => r.json())
+        .then((data) => data.results[0].id);
+    }
+
+    function fetchRecommendations(id) {
+      return fetch(
+        `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`
+      )
+        .then((r) => r.json())
+        .then((data) => setData(data.results));
+    }
 
     console.log(data);
   }, [movieName]);
@@ -40,17 +46,19 @@ export default function App() {
     // for some reason the list shows after you search the second time
     <div className="App">
       <header className="App-header">
+      
         {!user ? <SignIn /> : <SignOut />}
-        {!data ? (
+        {user && !data ? (
           <div>
+            <h3>🍅</h3>
             <h1>RipeTomatoes</h1>
-            <h1>🍅</h1>
             <Entry action={setMovieName} />
           </div>
-        ) : (
+        ) : user ? (
           // this should probably be in a receipt component / separated into mini components
           <div className="Receipt">
             <h1>RipeTomatoes</h1>
+            <h3>🍅</h3>
             <h2>web app 2021</h2>
             <h2>1 LMU Drive</h2>
             <h2>Los Angeles, CA 90045</h2>
@@ -61,7 +69,7 @@ export default function App() {
             <p>search again?</p>
             <Entry action={setMovieName} />
           </div>
-        )}
+        ): ""}
       </header>
     </div>
   );
