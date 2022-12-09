@@ -24,11 +24,15 @@
   mix-blend-mode: multiply;
   width: 150px;
   padding: 0;
-  margin: 0;
+  margin: -15px;
 }
 
 Button {
   font-family: Reciept;
+}
+
+h1 {
+  margin: 5px;
 }
 
 h2 {
@@ -52,4 +56,27 @@ h3 {
   font-size: 40px;
 }
 
+input {
+  font: inherit;
+  border-radius: 20px;
+  border-width: 3px;
+  border-color: black;
+  margin: 5px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 
+button {
+  font-family: inherit;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: lightgray;
+}
