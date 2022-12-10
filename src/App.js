@@ -33,11 +33,13 @@ export default function App() {
         `https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=37b53cbaa10e2c7d21434c2a90d92950&language=en-US&page=1`
       )
         .then((r) => r.json())
-        .then((data) => setData(data.results));
+        .then((data) =>
+          setData(data.results.sort(() => 0.5 - Math.random()).slice(0, 5))
+        );
     }
 
     console.log(data);
-  }, [movieName, data]);
+  }, [movieName]);
 
   useEffect(() => {
     if (!user) setData("");
@@ -66,7 +68,7 @@ export default function App() {
                 <div className="MovieRating">
                   <MovieRating data={data} />
                   <p>==========</p>
-                  <p>5</p>
+                  <p>{data.length}</p>
                 </div>
               </div>
 
