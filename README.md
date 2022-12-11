@@ -9,5 +9,5 @@
 ## What RipeTomatoes Does
 ### RipeTomatoes is a convenience and entertaiment app that references a database/API of movies, filtered through genres that align the genres of the user's choice TV show. Information produced for each movie will include the movie title, genres, and the rotten tomatoes score.
 
-https://ripetomatoes-5355c.web.app/
+Link to RipeTomatoes: https://ripetomatoes-5355c.web.app/
 
