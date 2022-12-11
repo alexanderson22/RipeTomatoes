@@ -39,11 +39,6 @@ export default function App() {
   }, [movieName]);
 
   return (
-    // add action to Button
-
-    // what to do with sign in button? maybe you can only search if you're signed in
-
-    // for some reason the list shows after you search the second time
     <div className="App">
       <header className="App-header">
         {!user ? <SignIn /> : <SignOut />}
