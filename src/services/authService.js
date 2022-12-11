@@ -2,9 +2,14 @@ import { useState, useEffect } from "react";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 
-export function SignIn() {
+export function SignIn({ clear }) {
   return (
-    <button onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}>
+    <button
+      onClick={() => {
+        signInWithPopup(auth, new GoogleAuthProvider());
+        clear();
+      }}
+    >
       Sign In
     </button>
   );
@@ -13,8 +18,6 @@ export function SignIn() {
 export function SignOut() {
   return (
     <div>
-      Hello, {auth.currentUser.displayName} &nbsp;
-      <img src={auth.currentUser.photoURL} />
       <button onClick={() => signOut(auth)}>Sign Out</button>
     </div>
   );

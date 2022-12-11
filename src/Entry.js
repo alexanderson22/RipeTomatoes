@@ -11,7 +11,11 @@ export default function Entry({ action }) {
 
   return (
     <form onSubmit={submit}>
-      <input value={content} onChange={(e) => setContent(e.target.value)} />
+      <input
+        placeholder="Search"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
     </form>
   );
 }

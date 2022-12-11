@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgb(255, 255, 255);
 }
 
 @font-face {
@@ -7,9 +8,20 @@
   src: url("../public/Receipt.ttf");
 }
 
-.App-header {
+.Receipt {
   background-image: url("../public/crumpled.jpg");
   background-size: contain;
+  background-size: 300%;
+  padding: 25px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 25px;
+  width: 300px;
+  box-shadow: 8px 8px 50px gray;
+}
+
+.App-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,18 +35,38 @@
 .Qr {
   mix-blend-mode: multiply;
   width: 150px;
+  height: 150px;
+  border-radius: 0;
   padding: 0;
-  margin: 0;
+  margin: -15px;
 }
 
 Button {
   font-family: Reciept;
 }
 
+p {
+  font-size: 26px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 5px;
+  font-size: calc(30px + 2vmin);
+}
+
 h2 {
   font-size: calc(18px + 2vmin);
   margin: 0;
   padding: 0;
+}
+
+img {
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: -4px;
+  margin-right: 5px;
 }
 
 h3 {
@@ -44,4 +76,52 @@ h3 {
 }
 
 input {
+  font: inherit;
+  border-radius: 20px;
+  border-width: 3px;
+  border-color: black;
+  margin: 5px;
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+button {
+  font-family: inherit;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
+.Map {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.MovieInfo,
+.MovieRating {
+  text-align: left;
+  flex-direction: column;
+}
+
+.Overlay {
+  mix-blend-mode: color-burn;
+}
+
+.Card {
+  margin-top: 0px;
+  text-align: left;
+}
+
+.searchAgain {
+  padding: 5px;
+  display: flex;
 }
