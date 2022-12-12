@@ -6,7 +6,6 @@ import MovieRating from "./MovieRating.js";
 import { SignIn } from "./services/authService";
 import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
-
 import qr from "./qr.png";
 import { auth } from "./firebaseConfig";
 
@@ -39,6 +38,7 @@ export default function App() {
     }
 
     console.log(data);
+    // eslint-disable-next-line
   }, [movieName]);
 
   useEffect(() => {
@@ -48,12 +48,12 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {!data || !user ? (
-          <div>
-            <h1>RipeTomatoes 🍅</h1>
-          </div>
-        ) : (
-          <div className="Receipt">
+        <div className="Receipt">
+          {!data || !user ? (
+            <div>
+              <h1>RipeTomatoes 🍅</h1>
+            </div>
+          ) : (
             <div className="Overlay">
               <h1>RipeTomatoes 🍅</h1>
               <h2>web app 2021</h2>
@@ -80,17 +80,19 @@ export default function App() {
               </div>
               <p>Thank you, come again!</p>
             </div>
-          </div>
-        )}
-        <div>
-          {!user ? (
-            <SignIn />
-          ) : (
-            <div className="searchAgain">
-              <Entry action={setMovieName} />
-              <SignOut />
-            </div>
           )}
+          <div>
+            {!user ? (
+              <div>
+                <SignIn />
+              </div>
+            ) : (
+              <div className="searchAgain">
+                <Entry action={setMovieName} />
+                <SignOut />
+              </div>
+            )}
+          </div>
         </div>
       </header>
     </div>
