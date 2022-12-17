@@ -1,7 +1,7 @@
 // This service completely hides the data store from the rest of the app.
 // No other part of the app knows how the data is stored. If anyone wants
 // to read or write data, they have to go through this service.
-
+import App from "../App";
 import { auth, database } from "../firebaseConfig";
 import {
   collection,
@@ -13,9 +13,9 @@ import {
   Timestamp,
 } from "firebase/firestore";
 
-export async function createRecommendation({ title }) {
+export async function createRecommendation({ movieName }) {
   const data = {
-    title,
+    movieName,
     userId: auth.currentUser.uid,
     date: Timestamp.now(),
   };
