@@ -8,6 +8,7 @@ import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
 import qr from "./qr.png";
 import { auth } from "./firebaseConfig";
+import { createRecommendation } from "./services/recommendationService";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
@@ -79,6 +80,11 @@ export default function App() {
                 <p>XXXXXXXXXXXX2021 CARD APPROVED</p>
               </div>
               <p>Thank you, come again!</p>
+              <p>
+                <button onClick={() => createRecommendation({ title: "it" })}>
+                  Save Favorite
+                </button>
+              </p>
             </div>
           )}
           <div>
