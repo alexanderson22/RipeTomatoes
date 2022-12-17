@@ -8,10 +8,7 @@ import { SignOut } from "./services/authService";
 import { useAuthentication } from "./services/authService";
 import qr from "./qr.png";
 import { auth } from "./firebaseConfig";
-import {
-  createRecommendation,
-  fetchFavorites,
-} from "./services/recommendationService";
+import { createRecommendation } from "./services/recommendationService";
 
 export default function App() {
   const [movieName, setMovieName] = useState("");
