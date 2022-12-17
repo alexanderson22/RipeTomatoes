@@ -81,7 +81,7 @@ export default function App() {
               </div>
               <p>Thank you, come again!</p>
               <p>
-                <button onClick={() => createRecommendation({ title: "it" })}>
+                <button onClick={() => createRecommendation({ movieName })}>
                   Save Favorite
                 </button>
               </p>
